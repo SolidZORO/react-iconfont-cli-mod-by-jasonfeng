@@ -13,8 +13,4 @@ const #componentName# = ({ size, color, style: _style, ...rest }) => {
   return (#iconContent#  );
 };
 
-#componentName#.defaultProps = {
-  size: #size#,
-};
-
 export default #componentName#;

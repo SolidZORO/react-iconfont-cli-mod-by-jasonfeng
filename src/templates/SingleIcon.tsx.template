@@ -19,8 +19,4 @@ const #componentName#: FunctionComponent<Props> = ({ size, color, style: _style,
   return (#iconContent#  );
 };
 
-#componentName#.defaultProps = {
-  size: #size#,
-};
-
 export default #componentName#;
