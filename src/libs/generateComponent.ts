@@ -75,7 +75,7 @@ export const generateComponent = (data: XmlData, config: Config) => {
     console.log(`${colors.green('√')} Generated icon "${colors.yellow(iconId)}"`);
   });
 
-  let iconFile =  getTemplate('Icon' + jsxExtension);
+  let iconFile = getTemplate('Icon' + jsxExtension);
 
   iconFile = replaceCases(iconFile, cases);
   iconFile = replaceImports(iconFile, imports);
@@ -130,14 +130,18 @@ const generateCase = (data: XmlData['svg']['symbol'][number], baseIdent: number)
   return template;
 };
 
-const addAttribute = (domName: string, sub: XmlData['svg']['symbol'][number]['path'][number], counter: { colorIndex: number, baseIdent: number }) => {
+const addAttribute = (domName: string, sub: XmlData['svg']['symbol'][number]['path'][number], counter: {
+  colorIndex: number,
+  baseIdent: number
+}) => {
   let template = '';
 
   if (sub && sub.$) {
     if (ATTRIBUTE_FILL_MAP.includes(domName)) {
       // Set default color same as in iconfont.cn
       // And create placeholder to inject color by user's behavior
-      sub.$.fill = sub.$.fill || '#333333';
+      // sub.$.fill = sub.$.fill || '#333333';
+      sub.$.fill = sub.$.fill || 'currentColor'; // 让顶端 className 可以通过 color 控制
     }
 
     for (const attributeName of Object.keys(sub.$)) {
